@@ -1,0 +1,21 @@
+package main.Service;
+
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class RabbitmqProducer {
+	
+	
+	@Autowired
+	private RabbitTemplate rabbitTemplate;
+	
+	
+	public void Message() {
+		
+		
+		rabbitTemplate.convertAndSend("ap.queue","appointment is booked ");
+	}
+
+}
