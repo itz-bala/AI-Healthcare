@@ -70,7 +70,7 @@ public class DoctorService_2 implements DoctorService{
 		dto.setEmail(doctor.getEmail());
 		dto.setId(doctor.getId());
 		
-		dto.setName(doctor.getEmail());
+		dto.setName(doctor.getName());
 		dto.setSpecialist(doctor.getSpecialist());
 		
 		

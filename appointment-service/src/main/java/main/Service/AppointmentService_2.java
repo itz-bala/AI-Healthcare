@@ -7,6 +7,7 @@ import org.springframework.web.client.RestTemplate;
 
 import main.Dto.AppointmentDto;
 import main.Dto.DoctorDto;
+import main.Dto.NotificationDto;
 import main.Dto.PatientDto;
 import main.Entity.Appointment;
 import main.Exception.DoctorNotFoundException;
@@ -45,13 +46,17 @@ public class AppointmentService_2 implements AppointmentService{
 	public AppointmentDto createBooking(AppointmentDto dto) {
 		
 		
+		PatientDto patient=null;
+		DoctorDto doctor=null;
+		
+		
 		try {
 			
 		ResponseEntity<PatientDto>response_1=
 				restTemplate.getForEntity("http://localhost:8071/patient/getById/"+dto.getPatient_id(),
 						PatientDto.class);
 		
-		PatientDto patient=response_1.getBody();
+		 patient=response_1.getBody();
 		
 		
 		}catch(HttpClientErrorException.NotFound  e) {
@@ -70,7 +75,7 @@ public class AppointmentService_2 implements AppointmentService{
 				restTemplate.getForEntity("http://localhost:8074/doctor/getById/"+dto.getDoctor_id(),
 						DoctorDto.class);
 		
-		DoctorDto doctor=response_2.getBody();
+		 doctor=response_2.getBody();
 		
 		}catch(HttpClientErrorException.NotFound e) {
 			
@@ -107,7 +112,22 @@ public class AppointmentService_2 implements AppointmentService{
 		appointmentdto.setAppointment_date(ap.getAppointment_date());
 		appointmentdto.setId(ap.getId());
 		
-		producer.Message();//notification
+		//producer.Message();//notification
+		
+		
+		NotificationDto notification = new NotificationDto();
+
+		notification.setPatientId(patient.getId());
+		notification.setPatientName(patient.getName());
+		notification.setPatientEmail(patient.getEmail());
+
+		notification.setDoctorId(doctor.getId());
+		notification.setDoctorName(doctor.getName());
+		notification.setDoctorEmail(doctor.getEmail());
+
+		notification.setAppointmentDate(ap.getAppointment_date());
+
+		producer.send(notification);
 		
 		return  appointmentdto;
 	}
