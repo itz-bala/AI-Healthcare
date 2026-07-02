@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import main.Dto.PatientDto;
 import main.Service.PatientService;
 
@@ -31,7 +32,7 @@ public class PatientController {
 	
 	
 	@PostMapping("/register")
-	public ResponseEntity<PatientDto>createPatient(@RequestBody PatientDto dto){
+	public ResponseEntity<PatientDto>createPatient( @Valid @RequestBody PatientDto dto){
 		
 		PatientDto patient=service.createPatient(dto);
 		

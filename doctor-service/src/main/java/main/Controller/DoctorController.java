@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import main.Dto.DoctorDto;
 import main.Service.DoctorService;
 
@@ -29,7 +30,7 @@ public class DoctorController {
 	
 	
 	@PostMapping("/register")
-	public ResponseEntity<DoctorDto>createDoctor(@RequestBody DoctorDto dto){
+	public ResponseEntity<DoctorDto>createDoctor(@Valid @RequestBody DoctorDto dto){
 		
 		DoctorDto doctor=service.createDoctor(dto);
 		

@@ -36,6 +36,8 @@ public class DoctorService_2 implements DoctorService{
 		doctor.setEmail(dto.getEmail());
 		doctor.setName(dto.getName());
 		doctor.setSpecialist(dto.getSpecialist());
+		doctor.setPhonenum(dto.getPhonenum());
+		
 		
 		Doctor d=repo.save(doctor);
 		
@@ -46,6 +48,7 @@ public class DoctorService_2 implements DoctorService{
 		doctordto.setEmail(d.getEmail());
 		doctordto.setName(d.getName());
 		doctordto.setSpecialist(d.getSpecialist());
+		doctordto.setPhonenum(d.getPhonenum());
 		
 		
 		
@@ -72,6 +75,7 @@ public class DoctorService_2 implements DoctorService{
 		
 		dto.setName(doctor.getName());
 		dto.setSpecialist(doctor.getSpecialist());
+		dto.setPhonenum(doctor.getPhonenum());
 		
 		
 		

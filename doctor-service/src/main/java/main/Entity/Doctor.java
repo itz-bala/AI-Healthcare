@@ -7,6 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 @Table(name="doctor")
@@ -25,19 +26,24 @@ public class Doctor {
 
      @Email(message="invalid email")
 	private String email;
+     
+     
+     
+ 	private String phonenum;
 
 	 public Doctor() {
 		super();
 	 }
 
 	 public Doctor(Long id, @NotBlank(message = "name must be") String name,
-			@NotBlank(message = "must be specialist") String specialist,
-			@Email(message = "invalid email") String email) {
+			@NotBlank(message = "must be specialist") String specialist, @Email(message = "invalid email") String email,
+			String phonenum) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.specialist = specialist;
 		this.email = email;
+		this.phonenum = phonenum;
 	 }
 
 	 public Long getId() {
@@ -71,10 +77,16 @@ public class Doctor {
 	 public void setEmail(String email) {
 		 this.email = email;
 	 }
-	
-	
-     
-     
+
+	 public String getPhonenum() {
+		 return phonenum;
+	 }
+
+	 public void setPhonenum(String phonenum) {
+		 this.phonenum = phonenum;
+	 }
+
+	 
      
 
 }

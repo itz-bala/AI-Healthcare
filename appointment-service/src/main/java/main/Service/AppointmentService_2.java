@@ -120,16 +120,22 @@ public class AppointmentService_2 implements AppointmentService{
 		notification.setPatientId(patient.getId());
 		notification.setPatientName(patient.getName());
 		notification.setPatientEmail(patient.getEmail());
+		notification.setPatientPhonenum(patient.getPhonenum());
 
 		notification.setDoctorId(doctor.getId());
 		notification.setDoctorName(doctor.getName());
 		notification.setDoctorEmail(doctor.getEmail());
+		notification.setDoctorPhonenum(doctor.getPhonenum());
 
 		notification.setAppointmentDate(ap.getAppointment_date());
 
 		producer.send(notification);
 		
 		return  appointmentdto;
+		
+		
+		
+		
 	}
 	
 	

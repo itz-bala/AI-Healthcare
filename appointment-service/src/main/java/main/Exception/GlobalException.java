@@ -48,8 +48,9 @@ public class GlobalException {
 
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<String>internal_error(Exception ex){
+		ex.printStackTrace();
 		
-		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("internal server error please check your code");
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(ex.toString());
 	}
 
 }

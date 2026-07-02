@@ -40,6 +40,7 @@ public class PatientService_2  implements PatientService{
 		patient.setName(dto.getName());
 		patient.setGender(dto.getGender());
 		patient.setAge(dto.getAge());
+		patient.setPhonenum(dto.getPhonenum());
 		
 		 Patient p=repo.save(patient);
 		 
@@ -51,6 +52,7 @@ public class PatientService_2  implements PatientService{
 		 patientdto.setId(p.getId());
 		 patientdto.setName(p.getName());
 		 patientdto.setGender(p.getGender());
+		 patientdto.setPhonenum(p.getPhonenum());
 		 
 		 
 		
@@ -78,6 +80,7 @@ public class PatientService_2  implements PatientService{
 		dto.setName(patient.getName());
 		dto.setId(patient.getId());
 		dto.setGender(patient.getGender());
+		dto.setPhonenum(patient.getPhonenum());
 		
 		return dto;
 	}
